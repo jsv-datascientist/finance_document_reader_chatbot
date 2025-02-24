@@ -77,14 +77,57 @@ Few example of data
 
 - **For .txt file**
 
-<img src="images/txt-image.png" alt="LangGraph Flow" width="400" height="400" />
+<img src="images/txt-image.png" alt="Text file chatbot processing" width="400" height="400" />
 
 
 - **For .docx file**
 
-<img src="images/docx-image.png" alt="LangGraph Flow" width="400" height="400" />
+<img src="images/docx-image.png" alt="Docx file chatbot processing" width="400" height="400" />
 
 - **For pdf file**
 
-<img src="images/pdf-image.png" alt="LangGraph Flow" width="400" height="400" />
+<img src="images/pdf-image.png" alt="Pdf file chatbot processing" width="400" height="400" />
 
+
+# Run the App 
+
+## **1. Install the dependencies**
+
+- Create a conda or python environment and install all the depencies in requirements.txt
+
+```
+conda create -n myenv python=3.9
+conda activate myenv
+```
+- Install conda compatible packages 
+
+```
+conda install spacy pydantic requests python-dotenv python-docx pypdf regex
+```
+- Install remaining via pip 
+
+```
+pip install streamlit langchain langchain-chroma langchain-community langchain-core langchain-openai langgraph openai
+```
+
+## **2 To Run the Fast api , run the below command**
+
+```
+python api.py
+```
+
+Api should run in  http://127.0.0.1:8000 ( in my case)
+
+<img src="images/fastapi-log.png" alt="Fast API log" />
+
+
+## **3 To Run the Streamlit app , run the below command**
+
+```
+streamlit run app.py
+
+```
+
+App should be available in http://localhost:8501 (in my case )
+
+<img src="images/streamlit-log.png" alt="Streamlit log" />
