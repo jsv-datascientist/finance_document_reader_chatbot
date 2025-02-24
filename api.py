@@ -32,6 +32,10 @@ class QuestionRequest(BaseModel):
 
 @app.post("/chat")
 async def ask_question(request: QuestionRequest):
+    """
+    This method is called when the pdf file is processed and stored in vectorstore
+    to answer the question of user
+    """
     
     print("********************Inside the chat", request)
     question = request.question
@@ -51,12 +55,16 @@ async def ask_question(request: QuestionRequest):
         "question": question,
         "answers": [result.page_content for result in results]
     }
-    print("************** result", response)
+    
     return response
 
         
 @app.post("/finance")
 async def  upload_file(file: UploadFile = File(...)):
+        """
+        This method is added to process the files uploaded in the chatbot
+        This process pdf, text and docx file alone
+        """
         
         file_ext = file.filename.split(".")[-1].lower()
         
@@ -64,7 +72,7 @@ async def  upload_file(file: UploadFile = File(...)):
         contents = await file.read()
         
         file_path = ""
-        print("***********file type", file_ext)
+        
         #for processing pdf files 
         if file_ext == "pdf":
             file_path = f"./temp_{file.filename}"

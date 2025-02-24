@@ -57,6 +57,10 @@ def read_docx(file_path):
 
 
 def docx_processing(state: State) -> State:
+    """
+    This method is used for the docx processing 
+    We use here Rule Based processing
+    """
    
     print("Started procesing the docx file..............")
    

@@ -7,6 +7,11 @@ from utils.state import State
 from langchain.schema import AIMessage
 
 def text_processing(state: State) -> State:
+    """
+    This method is for text processing
+    We are using NER via spacy library to extract the entities
+    """
+    
     
     print("Started procesing the txt file..............")
     file_bytes = state["contents"]

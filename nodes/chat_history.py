@@ -1,6 +1,9 @@
 from utils.state import State 
 
 def update_chat_memory(state: State) -> State:
+    """
+    This is used to store the chat history of the file processing
+    """
     
     # Ensure memory is initialized
     if "memory" not in state:

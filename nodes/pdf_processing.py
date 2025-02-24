@@ -44,6 +44,10 @@ def create_vector_store(state: State) -> Chroma:
 
 
 def pdf_processing(state: State) -> State:
+    """
+    This method is for processing the pdf file. 
+    We store it in vector store for later querying
+    """
     
     create_vector_store(state)
     result= {'file_type': "pdf", "entities":"Document uploaded successfully in vectorstore. You can now ask questions."}

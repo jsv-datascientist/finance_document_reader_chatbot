@@ -7,6 +7,11 @@ import json
 
 
 def load_file():
+    """
+    We are creating a chat interface to upload the files 
+    and process it in fastapi
+    
+    """
     st.title("🤖 CMI . ADOR")
 
     API_URL = "http://127.0.0.1:8000/finance/" 
