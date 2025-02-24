@@ -99,6 +99,9 @@ Below is the LangGraph generated
 
 ## **1. Install the dependencies**
 
+- Create .env file in root folder of the project and add the OPENAI_API_KEY key.
+
+
 - Create a conda or python environment and install all the depencies in requirements.txt
 
 ```
