@@ -73,18 +73,24 @@ Below is the LangGraph generated
 <img src="images/langGraph-flow.png" alt="LangGraph Flow" width="400" height="400" />
  
 
-Few example of data 
+## **Chatbot Developed for POC**
 
-- **For .txt file**
+<img src="images/chatbot.png" alt="Chatbot"  />
+
+
+
+## **Below are output of files processed**
+
+## **For .txt file**
 
 <img src="images/txt-image.png" alt="Text file chatbot processing" width="400" height="400" />
 
 
-- **For .docx file**
+## **For .docx file**
 
 <img src="images/docx-image.png" alt="Docx file chatbot processing" width="400" height="400" />
 
-- **For pdf file**
+## **For pdf file**
 
 <img src="images/pdf-image.png" alt="Pdf file chatbot processing" width="400" height="400" />
 
@@ -131,3 +137,10 @@ streamlit run app.py
 App should be available in http://localhost:8501 (in my case )
 
 <img src="images/streamlit-log.png" alt="Streamlit log" />
+
+
+To test the chatbot, the files are present in data/ folder of the project.
+
+For futher process, we can aime to deploy in cloud.
+
+
