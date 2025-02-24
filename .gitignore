@@ -22,6 +22,7 @@ wheels/
 MANIFEST
 */__pycache__
 temp*
+233*
 
 # Virtual Environment
 venv/

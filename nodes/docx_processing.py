@@ -1,13 +1,12 @@
-
-
 import regex as re
 import json
 
 from docx import Document
+from langchain.schema import AIMessage
 
 from utils.state import State
 
-from langchain.schema import AIMessage
+
 
 def extract_field(text, field_name):
     pattern =  rf"{field_name}\s*\|\s*(.+)" 

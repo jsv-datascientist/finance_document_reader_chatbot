@@ -1,8 +1,10 @@
 
-from dotenv import load_dotenv
 import os
 import uvicorn
 import json 
+
+from dotenv import load_dotenv
+from pydantic import BaseModel
 
 from fastapi import FastAPI, UploadFile, HTTPException, File
 from fastapi.responses import JSONResponse
@@ -11,8 +13,6 @@ from langchain.schema import HumanMessage
 
 from utils.state import State
 from graph_builder import build_graph
-from pydantic import BaseModel
-
 from nodes.pdf_processing import get_vector_store
 
 

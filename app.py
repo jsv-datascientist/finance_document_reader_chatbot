@@ -1,10 +1,10 @@
 
 
-import streamlit as st
-from streamlit_chat import message 
+import streamlit as st 
 import requests
 import json
 
+from streamlit_chat import message
 
 def load_file():
     """
