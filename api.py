@@ -10,6 +10,11 @@ from fastapi import FastAPI, UploadFile, HTTPException, File
 from fastapi.responses import JSONResponse
 
 from langchain.schema import HumanMessage
+from langchain_openai import ChatOpenAI
+
+from langchain_core.prompts import ChatPromptTemplate
+from langchain.chains import create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
 
 from utils.state import State
 from graph_builder import build_graph
@@ -29,6 +34,9 @@ global_state = State = {
 
 class QuestionRequest(BaseModel):
     question: str
+    
+
+    
 
 @app.post("/chat")
 async def ask_question(request: QuestionRequest):
@@ -43,19 +51,34 @@ async def ask_question(request: QuestionRequest):
     #Get the global vector store
     vector_store = get_vector_store()
     
+    llm = ChatOpenAI()
+    
+    # See full prompt at https://smith.langchain.com/hub/langchain-ai/retrieval-qa-chat
+    #retrieval_qa_chat_prompt = hub.pull("langchain-ai/retrieval-qa-chat")
+    prompt = ChatPromptTemplate.from_template("""Answer the following question based only on the provided context:
+            <context>
+            {context}
+            </context>
+            Question: {input}""")
+
+    docs_chain = create_stuff_documents_chain(llm, prompt)
+    retrieval_chain = create_retrieval_chain(vector_store.as_retriever(), docs_chain)
+    
     if vector_store is None:
         raise HTTPException(status_code=400, detail="Vector store not initialized. Please upload a PDF first.")
     
+    results = retrieval_chain.invoke({"input": question})
+    
     # Process the question using your vector store
-    results = vector_store.similarity_search(question, k=5)  # Adjust as needed
+    #results = vector_store.similarity_search(question, k=5)  # Adjust as needed
     
     
     # Format the response
     response = {
         "question": question,
-        "answers": [result.page_content for result in results]
+        "answers": results['answer']
     }
-    
+    print(response)
     return response
 
         

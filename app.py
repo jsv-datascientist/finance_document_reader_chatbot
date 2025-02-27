@@ -103,7 +103,7 @@ def load_file():
                             # Add the user's question and system's response to the chat history
                             st.session_state.chat_history.append({"role": "user", "message": question})
                             if result["answers"]:
-                                st.session_state.chat_history.append({"role": "system", "message": result["answers"][0]})
+                                st.session_state.chat_history.append({"role": "system", "message": result["answers"]})
                         
                         except requests.exceptions.RequestException as e:
                             st.error(f"Error calling FastAPI: {e}")

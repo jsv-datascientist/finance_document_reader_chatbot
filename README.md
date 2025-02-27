@@ -92,7 +92,9 @@ Below is the LangGraph generated
 
 ## **For pdf file**
 
-<img src="images/pdf-image.png" alt="Pdf file chatbot processing" width="400" height="400" />
+<img src="images/pdf_chat_output.png" alt="Pdf file chatbot processing" width="400" height="400" />
+
+<img src="images/console_output.png" alt="Pdf file chatbot processing"/>
 
 
 # Run the App 
