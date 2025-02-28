@@ -40,6 +40,10 @@ techniques to be used.
 
 # **Solution Proposed**
 
+## * APP Hosted in Cloud
+The app is hosted in cloud and could be tested here using below URL
+https://cdor-app-817370516368.us-central1.run.app/
+
 ## **Tools & Technologies**
 
 - **Streamlit** - For frontend 

@@ -9,7 +9,7 @@ from langchain.chains import RetrievalQA
 import chromadb
 from pypdf import PdfReader
 
-from utils.state import State
+from api.utils.state import State
 
 import os
 import json

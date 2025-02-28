@@ -23,6 +23,7 @@ MANIFEST
 */__pycache__
 temp*
 233*
+chroma_db
 
 # Virtual Environment
 venv/

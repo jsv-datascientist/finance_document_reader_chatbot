@@ -16,9 +16,9 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 
-from utils.state import State
-from graph_builder import build_graph
-from nodes.pdf_processing import get_vector_store
+from api.utils.state import State
+from api.graph_builder import build_graph
+from api.nodes.pdf_processing import get_vector_store
 
 
 app = FastAPI()
@@ -117,7 +117,7 @@ async def  upload_file(file: UploadFile = File(...)):
         #state = update_chat_memory(global_state)
         
         graph = build_graph()
-        graph.get_graph().draw_mermaid_png(output_file_path="graph_flow.png")
+        graph.get_graph().draw_mermaid_png(output_file_path="/app/cache/graph_flow.png")
         result = graph.invoke(global_state)
         
         
@@ -142,7 +142,7 @@ def root():
     return {"Hello": "World"}
 
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+#if __name__ == "__main__":
+#    uvicorn.run(app, host="127.0.0.1", port=8000)
 
 

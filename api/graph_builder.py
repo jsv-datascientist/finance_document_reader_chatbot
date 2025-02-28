@@ -2,13 +2,13 @@
 from langgraph.graph import StateGraph, START, END 
 from langgraph.checkpoint.memory import MemorySaver
 
-from utils.state import State
+from api.utils.state import State
 
-from nodes.docx_processing import docx_processing
-from nodes.text_processing import text_processing
-from nodes.chat_history import update_chat_memory
-from nodes.pdf_processing import pdf_processing
-from nodes.router import route_based_on_file_type
+from api.nodes.docx_processing import docx_processing
+from api.nodes.text_processing import text_processing
+from api.nodes.chat_history import update_chat_memory
+from api.nodes.pdf_processing import pdf_processing
+from api.nodes.router import route_based_on_file_type
 
 
 def build_graph():

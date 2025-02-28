@@ -2,7 +2,7 @@
 import spacy
 import json
 
-from utils.state import State
+from api.utils.state import State
 
 from langchain.schema import AIMessage
 

@@ -1,4 +1,4 @@
-from utils.state import State 
+from api.utils.state import State 
 
 def update_chat_memory(state: State) -> State:
     """

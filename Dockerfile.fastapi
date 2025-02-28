@@ -1,0 +1,27 @@
+FROM python:3.9-slim
+
+ENV PORT=8000
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY api/ ./api/
+
+# Copy the entrypoint script and give execution permission
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Use a non-root user for better security
+RUN addgroup --system appgroup && adduser --system --group appuser
+
+# Ensure the working directory and cache directory exist and are owned by appuser
+RUN mkdir -p /app/cache && chown -R appuser:appgroup /app
+
+#Now switch to the non-root user AFTER setting permissions
+USER appuser
+
+# Run the FastAPI app using the entrypoint script
+ENTRYPOINT ["/entrypoint.sh"]

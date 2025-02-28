@@ -2,7 +2,8 @@
 
 import streamlit as st 
 import requests
-import json
+import os
+import logging
 
 from streamlit_chat import message
 
@@ -13,11 +14,21 @@ def load_file():
     
     """
     st.title("🤖 CMI . ADOR")
-
-    API_URL = "http://127.0.0.1:8000/finance/" 
+    logging.basicConfig(level=logging.INFO)  
+    logger = logging.getLogger(__name__)
     
-    CHAT_URL = "http://127.0.0.1:8000/chat/" 
+    PORT = int(os.getenv("PORT", 8080))  # Default to 8080
+    st.write(f"Running on port {PORT}")
 
+    API_URL =  os.getenv("ROOT_URL", "http://localhost:8080") 
+    FINANCE_URL = f"{API_URL}/finance"
+    CHAT_URL =  f"{API_URL}/chat"
+    
+    print("*********** FINANCE_URL ", FINANCE_URL)
+    print("*********** CHAT_URL ", CHAT_URL)
+    logger.info(f"✅ FastAPI ROOT URL: {API_URL}")
+    logger.info(f"✅ FINANCE_URL URL: {FINANCE_URL}")
+    logger.info(f"✅ CHAT_URL URL: {CHAT_URL}")
 
     # Initialize session state for messages and results if not already present
     if 'messages' not in st.session_state:
@@ -39,7 +50,7 @@ def load_file():
                 files = {"file": (input_file.name, input_file.getvalue(), input_file.type)}
                 
                 # Make the FastAPI call here 
-                response = requests.post(API_URL, files=files)
+                response = requests.post(FINANCE_URL, files=files)
                 
                 if response.status_code == 200:
                     result = response.json()
